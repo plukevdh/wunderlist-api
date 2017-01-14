@@ -522,4 +522,4 @@ var Wunderlist = function () {
   return Wunderlist;
 }();
 
-export default Wunderlist;
+module.exports = Wunderlist;
