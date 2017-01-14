@@ -11,7 +11,7 @@
 
 'use strict';
 
-class Wunderlist {
+export default class Wunderlist {
   constructor(config) {
     this.headers = () => {
       return {
@@ -357,5 +357,3 @@ class Wunderlist {
     return this.paths(url);
   }
 }
-
-module.exports = Wunderlist;
