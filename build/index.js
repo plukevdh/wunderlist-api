@@ -173,16 +173,20 @@ var Wunderlist = function () {
     }
   }, {
     key: 'createTask',
-    value: function createTask(listId, title, state, starred) {
+    value: function createTask(list_id, title) {
+      var due_date = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      var completed = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+      var starred = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+
+      var body = { list_id: list_id, title: title, completed: completed, starred: starred };
+      if (due_date) {
+        body[due_date] = due_date;
+      }
+
       var url = {
         url: this.endpoint + 'tasks',
         method: 'POST',
-        json: {
-          "list_id": listId,
-          "title": title,
-          "completed": state,
-          "starred": starred
-        }
+        json: body
       };
 
       return this.paths(url);

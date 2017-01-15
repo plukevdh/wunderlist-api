@@ -146,16 +146,14 @@ export default class Wunderlist {
     return this.paths(url);
   }
 
-  createTask(listId, title, state, starred) {
+  createTask(list_id, title, due_date=null, completed=false, starred=false) {
+    let body = { list_id, title, completed, starred };
+    if(due_date) { body[due_date] = due_date }
+
     let url = {
       url:  this.endpoint + 'tasks',
       method: 'POST',
-      json: {
-        "list_id": listId,
-        "title": title,
-        "completed": state,
-        "starred": starred
-      }
+      json: body
     }
 
     return this.paths(url);
