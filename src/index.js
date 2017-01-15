@@ -148,7 +148,7 @@ export default class Wunderlist {
 
   createTask(list_id, title, due_date=null, completed=false, starred=false) {
     let body = { list_id, title, completed, starred };
-    if(due_date) { body[due_date] = due_date }
+    if(due_date) { body['due_date'] = new Date(due_date).toISOString() }
 
     let url = {
       url:  this.endpoint + 'tasks',

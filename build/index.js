@@ -180,7 +180,7 @@ var Wunderlist = function () {
 
       var body = { list_id: list_id, title: title, completed: completed, starred: starred };
       if (due_date) {
-        body[due_date] = due_date;
+        body['due_date'] = new Date(due_date).toISOString();
       }
 
       var url = {
